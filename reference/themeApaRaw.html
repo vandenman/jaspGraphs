@@ -73,7 +73,7 @@ other themes, graph + themeApaRaw()." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">jaspGraphs</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.2.6</span>
       </span>
     </div>
 
@@ -134,9 +134,9 @@ other themes, <code>graph + themeApaRaw()</code>.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>legend.pos</th>
-      <td><p>One of `"right"`, `"left"`, `"top"`, `"bottom"`,
-`"topleft"`, `"topright"`, `"topmiddle"`, `"bottomleft"`,
- `"bottomright"`, or `"bottommiddle"`.
+      <td><p>One of <code>"right"</code>, <code>"left"</code>, <code>"top"</code>, <code>"bottom"</code>,
+<code>"topleft"</code>, <code>"topright"</code>, <code>"topmiddle"</code>, <code>"bottomleft"</code>,
+<code>"bottomright"</code>, or <code>"bottommiddle"</code>.
 Positions the legend, which will layer on top of any geoms, on the plane.</p></td>
     </tr>
     <tr>
@@ -193,34 +193,34 @@ lines) be removed? Default is TRUE.</p></td>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This function is a modification of <code>jtools::theme_apa</code>
-  that applies a theme to <code>ggplot2</code> figures with a
-  style that is roughly in line with APA guidelines. Users may need to
-  perform further operations for their specific use cases.</p>
+that applies a theme to <code>ggplot2</code> figures with a
+style that is roughly in line with APA guidelines. Users may need to
+perform further operations for their specific use cases.</p>
 <p>There are some things to keep in mind about APA style figures:</p><ul>
 <li><p>Main titles should be written in the word processor or typesetter
-   rather than on the plot image itself.</p></li>
+rather than on the plot image itself.</p></li>
 <li><p>In some cases, users can forgo a legend in favor of describing the
-   figure in a caption (also written in the word processor/typesetter).</p></li>
+figure in a caption (also written in the word processor/typesetter).</p></li>
 <li><p>Legends are typically embedded on the coordinate plane of the figure
-   rather than next to it, as is default in <code>ggplot2</code>.</p></li>
+rather than next to it, as is default in <code>ggplot2</code>.</p></li>
 <li><p>Use of color is generally discouraged since most of the applications
-   for which APA figures are needed involve eventual publication in non-color
-   print media.</p></li>
+for which APA figures are needed involve eventual publication in non-color
+print media.</p></li>
 <li><p>There are no hard and fast rules on font size, though APA recommends
-   choosing between 8 and 14-point. Fonts in figures should be sans serif.</p></li>
+choosing between 8 and 14-point. Fonts in figures should be sans serif.</p></li>
 </ul>
 
 <p>Because APA style calls for positioning legends on the plane itself, this
-  function includes options for choosing a position--top left, top right, bottom
-  left, bottom right--to place the legend. <code>ggplot2</code> provides no obvious
-  way to automatically choose a position that overlaps least with the geoms (the
-  plotted data), so users will need to choose one.</p>
+function includes options for choosing a position--top left, top right, bottom
+left, bottom right--to place the legend. <code>ggplot2</code> provides no obvious
+way to automatically choose a position that overlaps least with the geoms (the
+plotted data), so users will need to choose one.</p>
 <p>Facetting is supported, but APA guidelines are considerably less clear for
-  such situations.</p>
+such situations.</p>
 <p>This theme was created with inspiration from Rudolf Cardinal's
-  <a href='http://egret.psychol.cam.ac.uk/statistics/R/graphs2.html'>code</a>, which
-  required updating for newer versions of <code>ggplot2</code> and adaptations for
-  APA style.</p>
+<a href='http://egret.psychol.cam.ac.uk/statistics/R/graphs2.html'>code</a>, which
+required updating for newer versions of <code>ggplot2</code> and adaptations for
+APA style.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

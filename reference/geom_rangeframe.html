@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">jaspGraphs</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.2.6</span>
       </span>
     </div>
 
@@ -231,7 +231,7 @@ the default plot specification, e.g. <code><a href='https://ggplot2.tidyverse.or
 <span class='co'># add bty = 'n' for x and y-axes.</span>
 <span class='va'>graph</span> <span class='op'>+</span>
  <span class='fu'>geom_rangeframe</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
- <span class='fu'><a href='themeJasp.html'>themeJaspRaw</a></span><span class='op'>(</span><span class='op'>)</span>
+ <span class='fu'><a href='themeJaspRaw.html'>themeJaspRaw</a></span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='img'><img src='geom_rangeframe-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># automatically done by themeJasp</span>
 <span class='fu'><a href='themeJasp.html'>themeJasp</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span>
@@ -239,26 +239,26 @@ the default plot specification, e.g. <code><a href='https://ggplot2.tidyverse.or
 <span class='co'># only draw the x-axis line</span>
 <span class='va'>graph</span> <span class='op'>+</span>
   <span class='fu'>geom_rangeframe</span><span class='op'>(</span>sides <span class='op'>=</span> <span class='st'>"b"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='themeJasp.html'>themeJaspRaw</a></span><span class='op'>(</span><span class='op'>)</span>
+  <span class='fu'><a href='themeJaspRaw.html'>themeJaspRaw</a></span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='img'><img src='geom_rangeframe-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># coord_flip does not interact with sides</span>
 <span class='va'>graph</span> <span class='op'>+</span> 
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_rangeframe</span><span class='op'>(</span>sides <span class='op'>=</span> <span class='st'>"b"</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='themeJasp.html'>themeJaspRaw</a></span><span class='op'>(</span><span class='op'>)</span>
+  <span class='fu'><a href='themeJaspRaw.html'>themeJaspRaw</a></span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='img'><img src='geom_rangeframe-4.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># add axis lines right and above of plot:</span>
 <span class='va'>graph</span> <span class='op'>+</span> 
   <span class='fu'><a href='scale_x_continuous.html'>scale_x_continuous</a></span><span class='op'>(</span>sec.axis <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/sec_axis.html'>sec_axis</a></span><span class='op'>(</span><span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log10</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
   <span class='fu'><a href='scale_x_continuous.html'>scale_y_continuous</a></span><span class='op'>(</span>sec.axis <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/sec_axis.html'>sec_axis</a></span><span class='op'>(</span><span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log10</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
   <span class='fu'>geom_rangeframe</span><span class='op'>(</span>sides <span class='op'>=</span> <span class='st'>"trbl"</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='themeJasp.html'>themeJaspRaw</a></span><span class='op'>(</span><span class='op'>)</span>
+  <span class='fu'><a href='themeJaspRaw.html'>themeJaspRaw</a></span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='img'><img src='geom_rangeframe-5.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># set x-axis to above the plot and draw a line there</span>
 <span class='va'>graph</span> <span class='op'>+</span> 
   <span class='fu'><a href='scale_x_continuous.html'>scale_x_continuous</a></span><span class='op'>(</span>position <span class='op'>=</span> <span class='st'>"top"</span><span class='op'>)</span> <span class='op'>+</span> 
   <span class='fu'>geom_rangeframe</span><span class='op'>(</span>sides <span class='op'>=</span> <span class='st'>"tl"</span>, panelInfo <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>t <span class='op'>=</span> <span class='st'>"x.major"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='themeJasp.html'>themeJaspRaw</a></span><span class='op'>(</span><span class='op'>)</span>
+  <span class='fu'><a href='themeJaspRaw.html'>themeJaspRaw</a></span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='img'><img src='geom_rangeframe-6.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

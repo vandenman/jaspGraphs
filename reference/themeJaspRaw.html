@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Custom geoms — geom_point • jaspGraphs</title>
+<title>JASP theme for ggplot2 objects — themeJaspRaw • jaspGraphs</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Custom geoms — geom_point" />
-<meta property="og:description" content="Custom geoms" />
+<meta property="og:title" content="JASP theme for ggplot2 objects — themeJaspRaw" />
+<meta property="og:description" content="JASP theme for ggplot2 objects" />
 
 
 
@@ -103,78 +103,78 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Custom geoms</h1>
+    <h1>JASP theme for ggplot2 objects</h1>
     
-    <div class="hidden name"><code>geom_point.Rd</code></div>
+    <div class="hidden name"><code>themeJaspRaw.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Custom geoms</p>
+    <p>JASP theme for ggplot2 objects</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geom_point</span><span class='op'>(</span>
-  mapping <span class='op'>=</span> <span class='cn'>NULL</span>,
-  data <span class='op'>=</span> <span class='cn'>NULL</span>,
-  stat <span class='op'>=</span> <span class='st'>"identity"</span>,
-  position <span class='op'>=</span> <span class='st'>"identity"</span>,
-  <span class='va'>...</span>,
-  na.rm <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  show.legend <span class='op'>=</span> <span class='cn'>NA</span>,
-  inherit.aes <span class='op'>=</span> <span class='cn'>TRUE</span>
-<span class='op'>)</span>
-
-<span class='fu'>geom_line</span><span class='op'>(</span>
-  mapping <span class='op'>=</span> <span class='cn'>NULL</span>,
-  data <span class='op'>=</span> <span class='cn'>NULL</span>,
-  stat <span class='op'>=</span> <span class='st'>"identity"</span>,
-  position <span class='op'>=</span> <span class='st'>"identity"</span>,
-  <span class='va'>...</span>,
-  na.rm <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  show.legend <span class='op'>=</span> <span class='cn'>NA</span>,
-  inherit.aes <span class='op'>=</span> <span class='cn'>TRUE</span>
+    <pre class="usage"><span class='fu'>themeJaspRaw</span><span class='op'>(</span>
+  legend.position <span class='op'>=</span> <span class='st'>"none"</span>,
+  legend.cex <span class='op'>=</span> <span class='fl'>1</span>,
+  axis.title.cex <span class='op'>=</span> <span class='fl'>1</span>,
+  family <span class='op'>=</span> <span class='fu'><a href='.graphOptions.html'>getGraphOption</a></span><span class='op'>(</span><span class='st'>"family"</span><span class='op'>)</span>,
+  axisTickLength <span class='op'>=</span> <span class='fu'><a href='.graphOptions.html'>getGraphOption</a></span><span class='op'>(</span><span class='st'>"axisTickLength"</span><span class='op'>)</span>,
+  axisTickWidth <span class='op'>=</span> <span class='fu'><a href='.graphOptions.html'>getGraphOption</a></span><span class='op'>(</span><span class='st'>"axisTickWidth"</span><span class='op'>)</span>,
+  fontsize <span class='op'>=</span> <span class='fu'><a href='.graphOptions.html'>getGraphOption</a></span><span class='op'>(</span><span class='st'>"fontsize"</span><span class='op'>)</span>,
+  legend.justification <span class='op'>=</span> <span class='st'>"top"</span>,
+  legend.title <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>family <span class='op'>=</span> <span class='va'>family</span>, size <span class='op'>=</span> <span class='va'>fontsize</span>, hjust <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>,
+  Xvjust <span class='op'>=</span> <span class='cn'>NULL</span>,
+  Yvjust <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>mapping</th>
-      <td><p>see details</p></td>
+      <th>legend.position</th>
+      <td><p>where should the legend be?</p></td>
     </tr>
     <tr>
-      <th>data</th>
-      <td><p>see details</p></td>
+      <th>legend.cex</th>
+      <td><p>magnification of the font size for the legend.</p></td>
     </tr>
     <tr>
-      <th>stat</th>
-      <td><p>see details</p></td>
+      <th>axis.title.cex</th>
+      <td><p>scalar magnification for the title of the axes.</p></td>
     </tr>
     <tr>
-      <th>position</th>
-      <td><p>see details</p></td>
+      <th>family</th>
+      <td><p>global font familiy.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>see details</p></td>
+      <th>axisTickLength</th>
+      <td><p>length of axis ticks.</p></td>
     </tr>
     <tr>
-      <th>na.rm</th>
-      <td><p>see details</p></td>
+      <th>axisTickWidth</th>
+      <td><p>width of axis ticks.</p></td>
     </tr>
     <tr>
-      <th>show.legend</th>
-      <td><p>see details</p></td>
+      <th>fontsize</th>
+      <td><p>global font size.</p></td>
     </tr>
     <tr>
-      <th>inherit.aes</th>
-      <td><p>see details</p></td>
+      <th>legend.justification</th>
+      <td><p>see theme</p></td>
+    </tr>
+    <tr>
+      <th>legend.title</th>
+      <td><p>should legend have a title?</p></td>
+    </tr>
+    <tr>
+      <th>Xvjust</th>
+      <td><p>adjustment of x-axis tick labels</p></td>
+    </tr>
+    <tr>
+      <th>Yvjust</th>
+      <td><p>adjustment of y-axis tick labels</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>These functions are virtually identical to <code><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></code> and <code><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></code>
-except that their underlying Geoms have different default values.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

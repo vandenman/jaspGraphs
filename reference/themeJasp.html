@@ -40,8 +40,8 @@
 
 
 <meta property="og:title" content="JASP theme for ggplot2 objects — themeJasp" />
-<meta property="og:description" content="Set a JASP theme and additional options with themeJASP(graph), or add the theme to a graph like
-with other themes, graph + themeJaspRaw()." />
+<meta property="og:description" content="
+Use themeJaspRaw and geom_rangeframe instead." />
 
 
 
@@ -73,7 +73,7 @@ with other themes, graph + themeJaspRaw()." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">jaspGraphs</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.2.6</span>
       </span>
     </div>
 
@@ -110,8 +110,8 @@ with other themes, graph + themeJaspRaw()." />
     </div>
 
     <div class="ref-description">
-    <p>Set a JASP theme and additional options with <code>themeJASP(graph)</code>, or add the theme to a graph like
-with other themes, <code>graph + themeJaspRaw()</code>.</p>
+    <p><a href='https://lifecycle.r-lib.org/articles/stages.html#deprecated'><img src='figures/lifecycle-deprecated.svg' alt='[Deprecated]' /></a></p>
+<p>Use <code><a href='themeJaspRaw.html'>themeJaspRaw</a></code> and <a href='geom_rangeframe.html'>geom_rangeframe</a> instead.</p>
     </div>
 
     <pre class="usage"><span class='fu'>themeJasp</span><span class='op'>(</span>
@@ -128,20 +128,6 @@ with other themes, <code>graph + themeJaspRaw()</code>.</p>
   legend.justification <span class='op'>=</span> <span class='st'>"top"</span>,
   axisTickLength <span class='op'>=</span> <span class='fu'><a href='.graphOptions.html'>getGraphOption</a></span><span class='op'>(</span><span class='st'>"axisTickLength"</span><span class='op'>)</span>,
   axisTickWidth <span class='op'>=</span> <span class='fu'><a href='.graphOptions.html'>getGraphOption</a></span><span class='op'>(</span><span class='st'>"axisTickWidth"</span><span class='op'>)</span>
-<span class='op'>)</span>
-
-<span class='fu'>themeJaspRaw</span><span class='op'>(</span>
-  legend.position <span class='op'>=</span> <span class='st'>"none"</span>,
-  legend.cex <span class='op'>=</span> <span class='fl'>1</span>,
-  axis.title.cex <span class='op'>=</span> <span class='fl'>1</span>,
-  family <span class='op'>=</span> <span class='fu'><a href='.graphOptions.html'>getGraphOption</a></span><span class='op'>(</span><span class='st'>"family"</span><span class='op'>)</span>,
-  axisTickLength <span class='op'>=</span> <span class='fu'><a href='.graphOptions.html'>getGraphOption</a></span><span class='op'>(</span><span class='st'>"axisTickLength"</span><span class='op'>)</span>,
-  axisTickWidth <span class='op'>=</span> <span class='fu'><a href='.graphOptions.html'>getGraphOption</a></span><span class='op'>(</span><span class='st'>"axisTickWidth"</span><span class='op'>)</span>,
-  fontsize <span class='op'>=</span> <span class='fu'><a href='.graphOptions.html'>getGraphOption</a></span><span class='op'>(</span><span class='st'>"fontsize"</span><span class='op'>)</span>,
-  legend.justification <span class='op'>=</span> <span class='st'>"top"</span>,
-  legend.title <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>family <span class='op'>=</span> <span class='va'>family</span>, size <span class='op'>=</span> <span class='va'>fontsize</span>, hjust <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>,
-  Xvjust <span class='op'>=</span> <span class='cn'>NULL</span>,
-  Yvjust <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -161,7 +147,7 @@ with other themes, <code>graph + themeJaspRaw()</code>.</p>
     </tr>
     <tr>
       <th>sides</th>
-      <td><p>see <code><a href='geom_rangeframe.html'>geom_rangeframe</a></code></p></td>
+      <td><p>see <a href='geom_rangeframe.html'>geom_rangeframe</a></p></td>
     </tr>
     <tr>
       <th>axis.title.cex</th>
@@ -204,16 +190,16 @@ with other themes, <code>graph + themeJaspRaw()</code>.</p>
       <td><p>magnification of the font size for the legend.</p></td>
     </tr>
     <tr>
-      <th>legend.title</th>
-      <td><p>should legend have a title?</p></td>
-    </tr>
-    <tr>
       <th>Xvjust</th>
       <td><p>adjustment of x-axis tick labels</p></td>
     </tr>
     <tr>
       <th>Yvjust</th>
       <td><p>adjustment of y-axis tick labels</p></td>
+    </tr>
+    <tr>
+      <th>legend.title</th>
+      <td><p>should legend have a title?</p></td>
     </tr>
     </table>
 
