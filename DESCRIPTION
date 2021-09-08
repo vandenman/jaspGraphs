@@ -21,3 +21,4 @@ Imports:
     scales,
     stringr,
     viridisLite
+Config/testthat/edition: 3

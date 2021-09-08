@@ -1,11 +1,6 @@
-context("Plot Editing")
-skip("All tests need to be updated!")
-
 expect_equal_opts <- function(newPlot, oldOpts, ...) {
 
   newOpts <- plotEditingOptions(newPlot)
-
-
 
   keep <- setdiff(names(oldOpts$xAxis$settings), c("range", "breaksType"))
   oldOpts$xAxis$settings <- oldOpts$xAxis$settings[keep]
@@ -18,12 +13,15 @@ expect_equal_opts <- function(newPlot, oldOpts, ...) {
 
 }
 
-data("mtcars")
 
 test_that("manipulating continuous axes works", {
 
-  g1a <- ggplot(mtcars, aes(x = mpg, y = disp)) + geom_line()
+  suppressWarnings(rm(".____plotEditingOptions____"))
 
+  data("mtcars", package = "datasets")
+  g1a <- ggplot2::ggplot(mtcars, ggplot2::aes(x = mpg, y = disp)) + ggplot2::geom_line()
+
+  vdiffr::expect_doppelganger("continuous axes -- g1a", g1a)
   opts1a <- plotEditingOptions(g1a)
 
   opts1b <- opts1a
@@ -32,9 +30,11 @@ test_that("manipulating continuous axes works", {
   opts1b$xAxis$settings$title  <- "HOOOOI"
   opts1b$xAxis$settings$breaksType <- "manual"
   opts1b$xAxis$settings$limitsType <- "breaks"
-  # opts1b$xAxis$settings$expand[c(2, 4)] <- c(5, 10)
+
 
   g1b <- plotEditing(g1a, opts1b)
+
+  vdiffr::expect_doppelganger("continuous axes -- g1b", g1b)
   expect_equal_opts(g1b, opts1b)
 
   opts1c <- opts1a
@@ -44,6 +44,8 @@ test_that("manipulating continuous axes works", {
   opts1c$yAxis$settings$labels <- as.character(seq(50, 400, 50))
 
   g1c <- plotEditing(g1a, opts1c)
+
+  vdiffr::expect_doppelganger("continuous axes -- g1c", g1c)
   expect_equal_opts(g1c, opts1c)
 
   opts1d <- opts1a
@@ -52,12 +54,67 @@ test_that("manipulating continuous axes works", {
   opts1d$xAxis$settings$limits <- c(10, 31)
 
   g1d <- plotEditing(g1a, opts1d)
+
+  vdiffr::expect_doppelganger("continuous axes -- g1d", g1d)
   expect_equal_opts(g1d, opts1d)
 
+})
+
+test_that("coord_flip is no problem", {
+
+  suppressWarnings(rm(".____plotEditingOptions____"))
+  data("anscombe", package = "datasets")
+  dat <- data.frame(
+    x = unlist(anscombe[, 1:4], use.names = FALSE),
+    y = unlist(anscombe[, 5:8], use.names = FALSE),
+    g = factor(rep(1:4, each = nrow(anscombe)))
+  )
+
+  g1a <- ggplot(dat, aes(x = x, y = y, group = g, color = g)) +
+    geom_line() +
+    coord_flip()
+
+  vdiffr::expect_doppelganger("coord_flip -- g1a", g1a)
+  opts1a <- plotEditingOptions(g1a)
+
+  opts1b <- opts1a
+  opts1b$xAxis$settings$breaks <- seq(0, 15, 3)
+  opts1b$xAxis$settings$labels <- as.character(opts1b$xAxis$settings$breaks)
+  opts1b$xAxis$settings$title  <- "HOOOOI"
+  opts1b$xAxis$settings$breaksType <- "manual"
+  opts1b$xAxis$settings$limitsType <- "breaks"
+
+  g1b <- plotEditing(g1a, opts1b)
+
+  vdiffr::expect_doppelganger("coord_flip -- g1b", g1b)
+  expect_equal_opts(g1b, opts1b)
+
+  opts1c <- opts1a
+  opts1c$yAxis$settings$limitsType <- "data"
+  opts1c$yAxis$settings$breaksType <- "manual"
+  opts1c$yAxis$settings$breaks <- seq(5, 30, 1)
+  opts1c$yAxis$settings$labels <- as.character(seq(5, 30, 1))
+
+  g1c <- plotEditing(g1a, opts1c)
+
+  vdiffr::expect_doppelganger("coord_flip -- g1c", g1c)
+  expect_equal_opts(g1c, opts1c)
+
+  opts1d <- opts1a
+  opts1d$xAxis$settings$range <- c(10, 30, 10)
+  opts1d$xAxis$settings$limitsType <- "manual"
+  opts1d$xAxis$settings$limits <- c(0, 31)
+
+  g1d <- plotEditing(g1a, opts1d)
+
+  vdiffr::expect_doppelganger("coord_flip -- g1d", g1d)
+  expect_equal_opts(g1d, opts1d)
 
 })
 
 test_that("manipulating discrete axes works", {
+
+  skip("these are disabled")
 
   g2a <- ggplot(mtcars, aes(x = mpg, y = factor(cyl))) + geom_point()
 
