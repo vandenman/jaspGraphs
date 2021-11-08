@@ -38,8 +38,6 @@
 
 
 
-  <link href="../extra.css" rel="stylesheet">
-  
 
 <meta property="og:title" content="Create a prior-posterior plot. — PlotPriorAndPosterior" />
 <meta property="og:description" content="Create a prior-posterior plot." />
@@ -210,11 +208,11 @@
     </tr>
     <tr>
       <th>CRItxt</th>
-      <td><p>String, display the credible interval as <code><a href='https://rdrr.io/r/base/paste.html'>paste0(CRItxt, "[", lower, ", ", upper, "]")</a></code>.</p></td>
+      <td><p>String, display the credible interval as <code>paste0(CRItxt, "[", lower, ", ", upper, "]")</code>.</p></td>
     </tr>
     <tr>
       <th>medianTxt</th>
-      <td><p>String, display the median as <code><a href='https://rdrr.io/r/base/paste.html'>paste(medianTxt, formatC(median, 3, format = "f"))</a></code>.</p></td>
+      <td><p>String, display the median as <code>paste(medianTxt, formatC(median, 3, format = "f"))</code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -227,46 +225,60 @@
     <p>If BF, CRI, and median are all NULL a ggplot, otherwise a gtable.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>n</span> <span class='op'>&lt;-</span> <span class='fl'>100</span>
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>3</span>, <span class='fl'>3</span>, length.out <span class='op'>=</span> <span class='va'>n</span><span class='op'>)</span>
-<span class='va'>dfLines</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
-  x <span class='op'>=</span> <span class='va'>x</span>,
-  y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>dnorm</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>dnorm</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>1</span>, <span class='fl'>.5</span><span class='op'>)</span><span class='op'>)</span>,
-  g <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Prior"</span>, <span class='st'>"Posterior"</span><span class='op'>)</span>, each <span class='op'>=</span> <span class='va'>n</span><span class='op'>)</span>
-<span class='op'>)</span>
-
-<span class='fu'>PlotPriorAndPosterior</span><span class='op'>(</span><span class='va'>dfLines</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: `themeJasp()` was deprecated in jaspGraphs 0.5.2.6.</span>
-#&gt; <span class='warning'>Please use `themeJaspRaw()` instead.</span></div><div class='img'><img src='PlotPriorAndPosterior-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='va'>dfPoints</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
-  x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0</span><span class='op'>)</span>,
-  y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>dnorm</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>.5</span><span class='op'>)</span><span class='op'>)</span>,
-  g <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Prior"</span>, <span class='st'>"Posterior"</span><span class='op'>)</span>
-<span class='op'>)</span>
-
-<span class='fu'>PlotPriorAndPosterior</span><span class='op'>(</span><span class='va'>dfLines</span>, <span class='va'>dfPoints</span><span class='op'>)</span>
-</div><div class='img'><img src='PlotPriorAndPosterior-2.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># add BF pizza</span>
-<span class='va'>BF10</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>dnorm</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>.5</span><span class='op'>)</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>dnorm</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>
-<span class='fu'>PlotPriorAndPosterior</span><span class='op'>(</span><span class='va'>dfLines</span>, <span class='va'>dfPoints</span>, <span class='va'>BF10</span>,      bfType <span class='op'>=</span> <span class='st'>"BF10"</span><span class='op'>)</span> <span class='co'># default</span>
-</div><div class='img'><img src='PlotPriorAndPosterior-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>PlotPriorAndPosterior</span><span class='op'>(</span><span class='va'>dfLines</span>, <span class='va'>dfPoints</span>, <span class='fl'>1</span> <span class='op'>/</span> <span class='va'>BF10</span>,  bfType <span class='op'>=</span> <span class='st'>"BF01"</span><span class='op'>)</span>
-</div><div class='img'><img src='PlotPriorAndPosterior-4.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>PlotPriorAndPosterior</span><span class='op'>(</span><span class='va'>dfLines</span>, <span class='va'>dfPoints</span>, <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>BF10</span><span class='op'>)</span>, bfType <span class='op'>=</span> <span class='st'>"LogBF10"</span><span class='op'>)</span>
-</div><div class='img'><img src='PlotPriorAndPosterior-5.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># change hypothesis</span>
-<span class='fu'>PlotPriorAndPosterior</span><span class='op'>(</span><span class='va'>dfLines</span>, <span class='va'>dfPoints</span>, <span class='va'>BF10</span>, hypothesis <span class='op'>=</span> <span class='st'>"smaller"</span><span class='op'>)</span>
-</div><div class='img'><img src='PlotPriorAndPosterior-6.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>PlotPriorAndPosterior</span><span class='op'>(</span><span class='va'>dfLines</span>, <span class='va'>dfPoints</span>, <span class='va'>BF10</span>, hypothesis <span class='op'>=</span> <span class='st'>"greater"</span><span class='op'>)</span>
-</div><div class='img'><img src='PlotPriorAndPosterior-7.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># add credible interval</span>
-<span class='va'>CRI</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.025</span>, <span class='fl'>0.975</span><span class='op'>)</span>, <span class='fl'>1</span>, <span class='fl'>.5</span><span class='op'>)</span>
-<span class='fu'>PlotPriorAndPosterior</span><span class='op'>(</span><span class='va'>dfLines</span>, <span class='va'>dfPoints</span>, CRI <span class='op'>=</span> <span class='va'>CRI</span><span class='op'>)</span>
-</div><div class='img'><img src='PlotPriorAndPosterior-8.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>PlotPriorAndPosterior</span><span class='op'>(</span><span class='va'>dfLines</span>, <span class='va'>dfPoints</span>, CRI <span class='op'>=</span> <span class='va'>CRI</span>, drawCRItxt <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='img'><img src='PlotPriorAndPosterior-9.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># add median</span>
-<span class='va'>median</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fl'>0.5</span>, <span class='fl'>1</span>, <span class='fl'>.5</span><span class='op'>)</span>
-<span class='fu'>PlotPriorAndPosterior</span><span class='op'>(</span><span class='va'>dfLines</span>, <span class='va'>dfPoints</span>, median <span class='op'>=</span> <span class='va'>median</span><span class='op'>)</span>
-</div><div class='img'><img src='PlotPriorAndPosterior-10.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># or combine them all</span>
-<span class='fu'>PlotPriorAndPosterior</span><span class='op'>(</span><span class='va'>dfLines</span>, <span class='va'>dfPoints</span>, <span class='va'>BF10</span>, CRI <span class='op'>=</span> <span class='va'>CRI</span>, median <span class='op'>=</span> <span class='va'>median</span><span class='op'>)</span>
-</div><div class='img'><img src='PlotPriorAndPosterior-11.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>n</span> <span class='op'>&lt;-</span> <span class='fl'>100</span></span>
+<span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>3</span>, <span class='fl'>3</span>, length.out <span class='op'>=</span> <span class='va'>n</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>dfLines</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span></span>
+<span class='r-in'>  x <span class='op'>=</span> <span class='va'>x</span>,</span>
+<span class='r-in'>  y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>dnorm</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>dnorm</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>1</span>, <span class='fl'>.5</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span class='r-in'>  g <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Prior"</span>, <span class='st'>"Posterior"</span><span class='op'>)</span>, each <span class='op'>=</span> <span class='va'>n</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>PlotPriorAndPosterior</span><span class='op'>(</span><span class='va'>dfLines</span><span class='op'>)</span></span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>`themeJasp()` was deprecated in jaspGraphs 0.5.2.6.</span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> Please use `themeJaspRaw()` instead.</span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span style='color: #555555;'>This warning is displayed once every 8 hours.</span></span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span style='color: #555555;'>Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</span></span>
+<span class='r-plt img'><img src='PlotPriorAndPosterior-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'><span class='va'>dfPoints</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span></span>
+<span class='r-in'>  x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0</span><span class='op'>)</span>,</span>
+<span class='r-in'>  y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>dnorm</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>.5</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span class='r-in'>  g <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Prior"</span>, <span class='st'>"Posterior"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>PlotPriorAndPosterior</span><span class='op'>(</span><span class='va'>dfLines</span>, <span class='va'>dfPoints</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='PlotPriorAndPosterior-2.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># add BF pizza</span></span>
+<span class='r-in'><span class='va'>BF10</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>dnorm</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>.5</span><span class='op'>)</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>dnorm</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>PlotPriorAndPosterior</span><span class='op'>(</span><span class='va'>dfLines</span>, <span class='va'>dfPoints</span>, <span class='va'>BF10</span>,      bfType <span class='op'>=</span> <span class='st'>"BF10"</span><span class='op'>)</span> <span class='co'># default</span></span>
+<span class='r-plt img'><img src='PlotPriorAndPosterior-3.png' alt='' width='700' height='433' /></span>
+<span class='r-in'><span class='fu'>PlotPriorAndPosterior</span><span class='op'>(</span><span class='va'>dfLines</span>, <span class='va'>dfPoints</span>, <span class='fl'>1</span> <span class='op'>/</span> <span class='va'>BF10</span>,  bfType <span class='op'>=</span> <span class='st'>"BF01"</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='PlotPriorAndPosterior-4.png' alt='' width='700' height='433' /></span>
+<span class='r-in'><span class='fu'>PlotPriorAndPosterior</span><span class='op'>(</span><span class='va'>dfLines</span>, <span class='va'>dfPoints</span>, <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>BF10</span><span class='op'>)</span>, bfType <span class='op'>=</span> <span class='st'>"LogBF10"</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='PlotPriorAndPosterior-5.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># change hypothesis</span></span>
+<span class='r-in'><span class='fu'>PlotPriorAndPosterior</span><span class='op'>(</span><span class='va'>dfLines</span>, <span class='va'>dfPoints</span>, <span class='va'>BF10</span>, hypothesis <span class='op'>=</span> <span class='st'>"smaller"</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='PlotPriorAndPosterior-6.png' alt='' width='700' height='433' /></span>
+<span class='r-in'><span class='fu'>PlotPriorAndPosterior</span><span class='op'>(</span><span class='va'>dfLines</span>, <span class='va'>dfPoints</span>, <span class='va'>BF10</span>, hypothesis <span class='op'>=</span> <span class='st'>"greater"</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='PlotPriorAndPosterior-7.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># add credible interval</span></span>
+<span class='r-in'><span class='va'>CRI</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.025</span>, <span class='fl'>0.975</span><span class='op'>)</span>, <span class='fl'>1</span>, <span class='fl'>.5</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>PlotPriorAndPosterior</span><span class='op'>(</span><span class='va'>dfLines</span>, <span class='va'>dfPoints</span>, CRI <span class='op'>=</span> <span class='va'>CRI</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='PlotPriorAndPosterior-8.png' alt='' width='700' height='433' /></span>
+<span class='r-in'><span class='fu'>PlotPriorAndPosterior</span><span class='op'>(</span><span class='va'>dfLines</span>, <span class='va'>dfPoints</span>, CRI <span class='op'>=</span> <span class='va'>CRI</span>, drawCRItxt <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='PlotPriorAndPosterior-9.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># add median</span></span>
+<span class='r-in'><span class='va'>median</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fl'>0.5</span>, <span class='fl'>1</span>, <span class='fl'>.5</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>PlotPriorAndPosterior</span><span class='op'>(</span><span class='va'>dfLines</span>, <span class='va'>dfPoints</span>, median <span class='op'>=</span> <span class='va'>median</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='PlotPriorAndPosterior-10.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># or combine them all</span></span>
+<span class='r-in'><span class='fu'>PlotPriorAndPosterior</span><span class='op'>(</span><span class='va'>dfLines</span>, <span class='va'>dfPoints</span>, <span class='va'>BF10</span>, CRI <span class='op'>=</span> <span class='va'>CRI</span>, median <span class='op'>=</span> <span class='va'>median</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='PlotPriorAndPosterior-11.png' alt='' width='700' height='433' /></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

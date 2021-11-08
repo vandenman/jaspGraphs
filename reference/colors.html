@@ -38,8 +38,6 @@
 
 
 
-  <link href="../extra.css" rel="stylesheet">
-  
 
 <meta property="og:title" content="JASP color palettes — JASPcolors" />
 <meta property="og:description" content="JASP color palettes" />
@@ -159,43 +157,52 @@
     <p>For ggplot2s, the convenience functions <code>scale_JASPcolor_\*</code> and <code>scale_JASPfill_\*</code> exist.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘ggplot2’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:jaspGraphs’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    geom_line, geom_point, scale_x_continuous, scale_y_continuous</span></div><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>jaspGraphs</span><span class='op'>)</span>
-<span class='fu'><a href='.graphOptions.html'>setGraphOption</a></span><span class='op'>(</span><span class='st'>"palette"</span>, <span class='st'>"colorblind"</span><span class='op'>)</span>
-
-<span class='co'># use colors directly</span>
-<span class='va'>colors</span> <span class='op'>&lt;-</span> <span class='fu'>JASPcolors</span><span class='op'>(</span><span class='st'>"colorblind"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>6</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='va'>colors</span>, pch <span class='op'>=</span> <span class='fl'>16</span>, cex <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-</div><div class='img'><img src='colors-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='va'>colors</span> <span class='op'>&lt;-</span> <span class='fu'>JASPcolors</span><span class='op'>(</span><span class='st'>"colorblind"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='va'>colors</span>, pch <span class='op'>=</span> <span class='fl'>16</span>, cex <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-</div><div class='img'><img src='colors-2.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># use a function if you want an arbitrary number of colros</span>
-<span class='va'>colFun</span> <span class='op'>&lt;-</span> <span class='fu'>JASPcolors</span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"colorblind"</span>, asFunction <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='fu'>colFun</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>, pch <span class='op'>=</span> <span class='fl'>16</span>, cex <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-</div><div class='img'><img src='colors-3.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># use colorscales in ggplot2</span>
-<span class='va'>e0</span> <span class='op'>&lt;-</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>
-<span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>e0</span>, y <span class='op'>=</span> <span class='va'>e0</span>, z <span class='op'>=</span> <span class='va'>e0</span>, g <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>e0</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>g0</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>df</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>x</span>, y <span class='op'>=</span> <span class='va'>y</span>, color <span class='op'>=</span> <span class='va'>z</span>, fill <span class='op'>=</span> <span class='va'>z</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='geom_point.html'>geom_point</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
-<span class='va'>g1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>df</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>x</span>, y <span class='op'>=</span> <span class='va'>y</span>, color <span class='op'>=</span> <span class='va'>g</span>, fill <span class='op'>=</span> <span class='va'>g</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='geom_point.html'>geom_point</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
-<span class='va'>g0</span>
-</div><div class='img'><img src='colors-4.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='va'>g1</span> <span class='op'>+</span> <span class='fu'>scale_JASPcolor_discrete</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>scale_JASPfill_discrete</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='img'><img src='colors-5.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># colorblind is not really suited for a continuous color scale</span>
-<span class='va'>g0</span> <span class='op'>+</span> <span class='fu'>scale_JASPcolor_continuous</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>scale_JASPfill_continuous</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='img'><img src='colors-6.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># viridis already looks a lot better!</span>
-<span class='fu'><a href='.graphOptions.html'>setGraphOption</a></span><span class='op'>(</span><span class='st'>"palette"</span>, <span class='st'>"viridis"</span><span class='op'>)</span>
-<span class='va'>g0</span> <span class='op'>+</span> <span class='fu'>scale_JASPcolor_continuous</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>scale_JASPfill_continuous</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='img'><img src='colors-7.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># reset the palette to it's default if you changed it globally!</span>
-<span class='fu'><a href='.graphOptions.html'>setGraphOption</a></span><span class='op'>(</span><span class='st'>"palette"</span>, <span class='st'>"colorblind"</span><span class='op'>)</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Attaching package: ‘ggplot2’</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> The following objects are masked from ‘package:jaspGraphs’:</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>     geom_line, geom_point, scale_x_continuous, scale_y_continuous</span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>jaspGraphs</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='.graphOptions.html'>setGraphOption</a></span><span class='op'>(</span><span class='st'>"palette"</span>, <span class='st'>"colorblind"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># use colors directly</span></span>
+<span class='r-in'><span class='va'>colors</span> <span class='op'>&lt;-</span> <span class='fu'>JASPcolors</span><span class='op'>(</span><span class='st'>"colorblind"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>6</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='va'>colors</span>, pch <span class='op'>=</span> <span class='fl'>16</span>, cex <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='colors-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>colors</span> <span class='op'>&lt;-</span> <span class='fu'>JASPcolors</span><span class='op'>(</span><span class='st'>"colorblind"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='va'>colors</span>, pch <span class='op'>=</span> <span class='fl'>16</span>, cex <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='colors-2.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># use a function if you want an arbitrary number of colros</span></span>
+<span class='r-in'><span class='va'>colFun</span> <span class='op'>&lt;-</span> <span class='fu'>JASPcolors</span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"colorblind"</span>, asFunction <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='fu'>colFun</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>, pch <span class='op'>=</span> <span class='fl'>16</span>, cex <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='colors-3.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># use colorscales in ggplot2</span></span>
+<span class='r-in'><span class='va'>e0</span> <span class='op'>&lt;-</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span></span>
+<span class='r-in'><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>e0</span>, y <span class='op'>=</span> <span class='va'>e0</span>, z <span class='op'>=</span> <span class='va'>e0</span>, g <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>e0</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>g0</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>df</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>x</span>, y <span class='op'>=</span> <span class='va'>y</span>, color <span class='op'>=</span> <span class='va'>z</span>, fill <span class='op'>=</span> <span class='va'>z</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='geom_point.html'>geom_point</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>g1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>df</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>x</span>, y <span class='op'>=</span> <span class='va'>y</span>, color <span class='op'>=</span> <span class='va'>g</span>, fill <span class='op'>=</span> <span class='va'>g</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='geom_point.html'>geom_point</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>g0</span></span>
+<span class='r-plt img'><img src='colors-4.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>g1</span> <span class='op'>+</span> <span class='fu'>scale_JASPcolor_discrete</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>scale_JASPfill_discrete</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='colors-5.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># colorblind is not really suited for a continuous color scale</span></span>
+<span class='r-in'><span class='va'>g0</span> <span class='op'>+</span> <span class='fu'>scale_JASPcolor_continuous</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>scale_JASPfill_continuous</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='colors-6.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># viridis already looks a lot better!</span></span>
+<span class='r-in'><span class='fu'><a href='.graphOptions.html'>setGraphOption</a></span><span class='op'>(</span><span class='st'>"palette"</span>, <span class='st'>"viridis"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>g0</span> <span class='op'>+</span> <span class='fu'>scale_JASPcolor_continuous</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>scale_JASPfill_continuous</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='colors-7.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># reset the palette to it's default if you changed it globally!</span></span>
+<span class='r-in'><span class='fu'><a href='.graphOptions.html'>setGraphOption</a></span><span class='op'>(</span><span class='st'>"palette"</span>, <span class='st'>"colorblind"</span><span class='op'>)</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

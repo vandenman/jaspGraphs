@@ -38,8 +38,6 @@
 
 
 
-  <link href="../extra.css" rel="stylesheet">
-  
 
 <meta property="og:title" content="Add base R's bty = 'n' to ggplot2 objects. — geom_rangeframe" />
 <meta property="og:description" content="Axis lines which extend to the maximum and minimum of the axis breaks. The implementation and documentation is largely adapted from geom_rangeframe." />
@@ -233,45 +231,51 @@ the default plot specification, e.g. <code><a href='https://ggplot2.tidyverse.or
 <p>Jeffrey B. Arnold (2019). ggthemes: Extra Themes, Scales and Geoms for 'ggplot2'. R package version 4.2.0. https://CRAN.R-project.org/package=ggthemes</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>jaspGraphs</span><span class='op'>)</span>
-
-<span class='co'># an example plot</span>
-<span class='va'>graph</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>mtcars</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>wt</span>, <span class='va'>mpg</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='co'># add bty = 'n' for x and y-axes.</span>
-<span class='va'>graph</span> <span class='op'>+</span>
- <span class='fu'>geom_rangeframe</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
- <span class='fu'><a href='themeJaspRaw.html'>themeJaspRaw</a></span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='img'><img src='geom_rangeframe-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># automatically done by themeJasp</span>
-<span class='fu'><a href='themeJasp.html'>themeJasp</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span>
-</div><div class='img'><img src='geom_rangeframe-2.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># only draw the x-axis line</span>
-<span class='va'>graph</span> <span class='op'>+</span>
-  <span class='fu'>geom_rangeframe</span><span class='op'>(</span>sides <span class='op'>=</span> <span class='st'>"b"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='themeJaspRaw.html'>themeJaspRaw</a></span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='img'><img src='geom_rangeframe-3.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># coord_flip does not interact with sides</span>
-<span class='va'>graph</span> <span class='op'>+</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_rangeframe</span><span class='op'>(</span>sides <span class='op'>=</span> <span class='st'>"b"</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='themeJaspRaw.html'>themeJaspRaw</a></span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='img'><img src='geom_rangeframe-4.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># add axis lines right and above of plot:</span>
-<span class='va'>graph</span> <span class='op'>+</span> 
-  <span class='fu'><a href='scale_x_continuous.html'>scale_x_continuous</a></span><span class='op'>(</span>sec.axis <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/sec_axis.html'>sec_axis</a></span><span class='op'>(</span><span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log10</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='scale_x_continuous.html'>scale_y_continuous</a></span><span class='op'>(</span>sec.axis <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/sec_axis.html'>sec_axis</a></span><span class='op'>(</span><span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log10</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'>geom_rangeframe</span><span class='op'>(</span>sides <span class='op'>=</span> <span class='st'>"trbl"</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='themeJaspRaw.html'>themeJaspRaw</a></span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='img'><img src='geom_rangeframe-5.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># set x-axis to above the plot and draw a line there</span>
-<span class='va'>graph</span> <span class='op'>+</span> 
-  <span class='fu'><a href='scale_x_continuous.html'>scale_x_continuous</a></span><span class='op'>(</span>position <span class='op'>=</span> <span class='st'>"top"</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'>geom_rangeframe</span><span class='op'>(</span>sides <span class='op'>=</span> <span class='st'>"tl"</span>, panelInfo <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>t <span class='op'>=</span> <span class='st'>"x.major"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='themeJaspRaw.html'>themeJaspRaw</a></span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='img'><img src='geom_rangeframe-6.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>jaspGraphs</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># an example plot</span></span>
+<span class='r-in'><span class='va'>graph</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>mtcars</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>wt</span>, <span class='va'>mpg</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span class='r-in'>  <span class='fu'><a href='geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># add bty = 'n' for x and y-axes.</span></span>
+<span class='r-in'><span class='va'>graph</span> <span class='op'>+</span></span>
+<span class='r-in'> <span class='fu'>geom_rangeframe</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span class='r-in'> <span class='fu'><a href='themeJaspRaw.html'>themeJaspRaw</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='geom_rangeframe-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># automatically done by themeJasp</span></span>
+<span class='r-in'><span class='fu'><a href='themeJasp.html'>themeJasp</a></span><span class='op'>(</span><span class='va'>graph</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='geom_rangeframe-2.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># only draw the x-axis line</span></span>
+<span class='r-in'><span class='va'>graph</span> <span class='op'>+</span></span>
+<span class='r-in'>  <span class='fu'>geom_rangeframe</span><span class='op'>(</span>sides <span class='op'>=</span> <span class='st'>"b"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span class='r-in'>  <span class='fu'><a href='themeJaspRaw.html'>themeJaspRaw</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='geom_rangeframe-3.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># coord_flip does not interact with sides</span></span>
+<span class='r-in'><span class='va'>graph</span> <span class='op'>+</span> </span>
+<span class='r-in'>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span class='r-in'>  <span class='fu'>geom_rangeframe</span><span class='op'>(</span>sides <span class='op'>=</span> <span class='st'>"b"</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span class='r-in'>  <span class='fu'><a href='themeJaspRaw.html'>themeJaspRaw</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='geom_rangeframe-4.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># add axis lines right and above of plot:</span></span>
+<span class='r-in'><span class='va'>graph</span> <span class='op'>+</span> </span>
+<span class='r-in'>  <span class='fu'><a href='scale_x_continuous.html'>scale_x_continuous</a></span><span class='op'>(</span>sec.axis <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/sec_axis.html'>sec_axis</a></span><span class='op'>(</span><span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log10</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span class='r-in'>  <span class='fu'><a href='scale_x_continuous.html'>scale_y_continuous</a></span><span class='op'>(</span>sec.axis <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/sec_axis.html'>sec_axis</a></span><span class='op'>(</span><span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log10</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span class='r-in'>  <span class='fu'>geom_rangeframe</span><span class='op'>(</span>sides <span class='op'>=</span> <span class='st'>"trbl"</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span class='r-in'>  <span class='fu'><a href='themeJaspRaw.html'>themeJaspRaw</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='geom_rangeframe-5.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># set x-axis to above the plot and draw a line there</span></span>
+<span class='r-in'><span class='va'>graph</span> <span class='op'>+</span> </span>
+<span class='r-in'>  <span class='fu'><a href='scale_x_continuous.html'>scale_x_continuous</a></span><span class='op'>(</span>position <span class='op'>=</span> <span class='st'>"top"</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span class='r-in'>  <span class='fu'>geom_rangeframe</span><span class='op'>(</span>sides <span class='op'>=</span> <span class='st'>"tl"</span>, panelInfo <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>t <span class='op'>=</span> <span class='st'>"x.major"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span class='r-in'>  <span class='fu'><a href='themeJaspRaw.html'>themeJaspRaw</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='geom_rangeframe-6.png' alt='' width='700' height='433' /></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

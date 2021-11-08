@@ -38,8 +38,6 @@
 
 
 
-  <link href="../extra.css" rel="stylesheet">
-  
 
 <meta property="og:title" content="Create a scatter plot with density — JASPScatterPlot" />
 <meta property="og:description" content="Create a scatter plot with density" />
@@ -219,63 +217,63 @@
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The only change added when <code>emulateGgMarginal = TRUE</code> is that <code><a href='https://ggplot2.tidyverse.org/reference/theme.html'>ggplot2::theme(plot.margin = unit(c(0, 0, 0.25, 0.25), "cm"))</a></code>
+    <p>The only change added when <code>emulateGgMarginal = TRUE</code> is that <code>ggplot2::theme(plot.margin = unit(c(0, 0, 0.25, 0.25), "cm"))</code>
 is added to the main plot</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>100</span><span class='op'>)</span>
-<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/GammaDist.html'>rgamma</a></span><span class='op'>(</span><span class='fl'>100</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>
-
-<span class='fu'>JASPScatterPlot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xName <span class='op'>=</span> <span class='st'>"Normal"</span>, yName <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span><span class='op'>(</span><span class='va'>gamma</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'>JASPScatterPlot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xName <span class='op'>=</span> <span class='st'>"Normal"</span>, yName <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span><span class='op'>(</span><span class='va'>gamma</span><span class='op'>)</span>, forceLinearSmooth <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='fu'>JASPScatterPlot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xName <span class='op'>=</span> <span class='st'>"Normal"</span>, yName <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span><span class='op'>(</span><span class='va'>gamma</span><span class='op'>)</span>, forceLinearSmooth <span class='op'>=</span> <span class='cn'>TRUE</span>,
-                smoothCIValue <span class='op'>=</span> <span class='fl'>.99</span><span class='op'>)</span>
-<span class='fu'>JASPScatterPlot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xName <span class='op'>=</span> <span class='st'>"Normal"</span>, yName <span class='op'>=</span> <span class='st'>"Gamma"</span>, addSmooth <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-<span class='fu'>JASPScatterPlot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xName <span class='op'>=</span> <span class='st'>"Normal"</span>, yName <span class='op'>=</span> <span class='st'>"Gamma"</span>, addSmoothCI <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-
-<span class='fu'>JASPScatterPlot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xName <span class='op'>=</span> <span class='st'>"Normal"</span>, yName <span class='op'>=</span> <span class='st'>"Gamma"</span>, plotAbove <span class='op'>=</span> <span class='st'>"histogram"</span><span class='op'>)</span>
-<span class='fu'>JASPScatterPlot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xName <span class='op'>=</span> <span class='st'>"Normal"</span>, yName <span class='op'>=</span> <span class='st'>"Gamma"</span>, plotAbove <span class='op'>=</span> <span class='st'>"histogram"</span>,
-                plotRight <span class='op'>=</span> <span class='st'>"histogram"</span><span class='op'>)</span>
-
-<span class='fu'>JASPScatterPlot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xName <span class='op'>=</span> <span class='st'>"Normal"</span>, yName <span class='op'>=</span> <span class='st'>"Gamma"</span>, plotAbove <span class='op'>=</span> <span class='st'>"histogram"</span>,
-                plotRight <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
-<span class='fu'>JASPScatterPlot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xName <span class='op'>=</span> <span class='st'>"Normal"</span>, yName <span class='op'>=</span> <span class='st'>"Gamma"</span>, plotAbove <span class='op'>=</span> <span class='st'>"none"</span>,
-                plotRight <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
-
-<span class='co'># we can do the same with a grouping variable</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"mtcars"</span><span class='op'>)</span>
-<span class='fu'>JASPScatterPlot</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>disp</span>, group <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>cyl</span><span class='op'>)</span>
-<span class='fu'>JASPScatterPlot</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>disp</span>, group <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>cyl</span>, plotAbove <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
-<span class='fu'>JASPScatterPlot</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>disp</span>, group <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>cyl</span>, plotRight <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
-<span class='fu'>JASPScatterPlot</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>disp</span>, group <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>cyl</span>, plotRight <span class='op'>=</span> <span class='st'>"none"</span>,
-                plotAbove <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
-
-<span class='fu'>JASPScatterPlot</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>disp</span>, group <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>cyl</span>, plotAbove <span class='op'>=</span> <span class='st'>"histogram"</span>,
-                plotRight <span class='op'>=</span> <span class='st'>"histogram"</span><span class='op'>)</span>
-
-<span class='co'># the color scheme can be changed with the global options:</span>
-<span class='va'>oldColor</span> <span class='op'>&lt;-</span> <span class='fu'><a href='.graphOptions.html'>graphOptions</a></span><span class='op'>(</span><span class='st'>"palette"</span><span class='op'>)</span>
-<span class='fu'><a href='.graphOptions.html'>graphOptions</a></span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"ggplot2"</span><span class='op'>)</span>
-<span class='fu'>JASPScatterPlot</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>disp</span>, group <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>cyl</span><span class='op'>)</span>
-<span class='fu'><a href='.graphOptions.html'>graphOptions</a></span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"viridis"</span><span class='op'>)</span>
-<span class='fu'>JASPScatterPlot</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>disp</span>, group <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>cyl</span><span class='op'>)</span>
-<span class='fu'><a href='.graphOptions.html'>graphOptions</a></span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"colorblind3"</span><span class='op'>)</span>
-<span class='fu'>JASPScatterPlot</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>disp</span>, group <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>cyl</span><span class='op'>)</span>
-<span class='fu'><a href='.graphOptions.html'>graphOptions</a></span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"gray"</span><span class='op'>)</span>
-<span class='fu'>JASPScatterPlot</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>disp</span>, group <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>cyl</span><span class='op'>)</span>
-<span class='fu'><a href='.graphOptions.html'>graphOptions</a></span><span class='op'>(</span>palette <span class='op'>=</span> <span class='va'>oldColor</span><span class='op'>)</span>
-
-<span class='co'>## NOT RUN</span>
-<span class='co'># spot the differences (if you find any report them to the package maintainer!)</span>
-<span class='va'>plot</span> <span class='op'>&lt;-</span> <span class='fu'>JASPScatterPlot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xName <span class='op'>=</span> <span class='st'>"Normal"</span>, yName <span class='op'>=</span> <span class='st'>"Gamma"</span>, addSmooth <span class='op'>=</span> <span class='cn'>FALSE</span>,
-                        emulateGgMarginal <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='va'>plot</span>
-<span class='co'># ggExtra::ggMarginal(plot$subplots[[1]])</span>
-
-<span class='op'>}</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>100</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/GammaDist.html'>rgamma</a></span><span class='op'>(</span><span class='fl'>100</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>JASPScatterPlot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xName <span class='op'>=</span> <span class='st'>"Normal"</span>, yName <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span><span class='op'>(</span><span class='va'>gamma</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>JASPScatterPlot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xName <span class='op'>=</span> <span class='st'>"Normal"</span>, yName <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span><span class='op'>(</span><span class='va'>gamma</span><span class='op'>)</span>, forceLinearSmooth <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>JASPScatterPlot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xName <span class='op'>=</span> <span class='st'>"Normal"</span>, yName <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span><span class='op'>(</span><span class='va'>gamma</span><span class='op'>)</span>, forceLinearSmooth <span class='op'>=</span> <span class='cn'>TRUE</span>,</span>
+<span class='r-in'>                smoothCIValue <span class='op'>=</span> <span class='fl'>.99</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>JASPScatterPlot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xName <span class='op'>=</span> <span class='st'>"Normal"</span>, yName <span class='op'>=</span> <span class='st'>"Gamma"</span>, addSmooth <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>JASPScatterPlot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xName <span class='op'>=</span> <span class='st'>"Normal"</span>, yName <span class='op'>=</span> <span class='st'>"Gamma"</span>, addSmoothCI <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>JASPScatterPlot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xName <span class='op'>=</span> <span class='st'>"Normal"</span>, yName <span class='op'>=</span> <span class='st'>"Gamma"</span>, plotAbove <span class='op'>=</span> <span class='st'>"histogram"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>JASPScatterPlot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xName <span class='op'>=</span> <span class='st'>"Normal"</span>, yName <span class='op'>=</span> <span class='st'>"Gamma"</span>, plotAbove <span class='op'>=</span> <span class='st'>"histogram"</span>,</span>
+<span class='r-in'>                plotRight <span class='op'>=</span> <span class='st'>"histogram"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>JASPScatterPlot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xName <span class='op'>=</span> <span class='st'>"Normal"</span>, yName <span class='op'>=</span> <span class='st'>"Gamma"</span>, plotAbove <span class='op'>=</span> <span class='st'>"histogram"</span>,</span>
+<span class='r-in'>                plotRight <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>JASPScatterPlot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xName <span class='op'>=</span> <span class='st'>"Normal"</span>, yName <span class='op'>=</span> <span class='st'>"Gamma"</span>, plotAbove <span class='op'>=</span> <span class='st'>"none"</span>,</span>
+<span class='r-in'>                plotRight <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># we can do the same with a grouping variable</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"mtcars"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>JASPScatterPlot</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>disp</span>, group <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>cyl</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>JASPScatterPlot</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>disp</span>, group <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>cyl</span>, plotAbove <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>JASPScatterPlot</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>disp</span>, group <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>cyl</span>, plotRight <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>JASPScatterPlot</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>disp</span>, group <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>cyl</span>, plotRight <span class='op'>=</span> <span class='st'>"none"</span>,</span>
+<span class='r-in'>                plotAbove <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>JASPScatterPlot</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>disp</span>, group <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>cyl</span>, plotAbove <span class='op'>=</span> <span class='st'>"histogram"</span>,</span>
+<span class='r-in'>                plotRight <span class='op'>=</span> <span class='st'>"histogram"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># the color scheme can be changed with the global options:</span></span>
+<span class='r-in'><span class='va'>oldColor</span> <span class='op'>&lt;-</span> <span class='fu'><a href='.graphOptions.html'>graphOptions</a></span><span class='op'>(</span><span class='st'>"palette"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='.graphOptions.html'>graphOptions</a></span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"ggplot2"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>JASPScatterPlot</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>disp</span>, group <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>cyl</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='.graphOptions.html'>graphOptions</a></span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"viridis"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>JASPScatterPlot</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>disp</span>, group <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>cyl</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='.graphOptions.html'>graphOptions</a></span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"colorblind3"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>JASPScatterPlot</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>disp</span>, group <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>cyl</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='.graphOptions.html'>graphOptions</a></span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"gray"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>JASPScatterPlot</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>disp</span>, group <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>cyl</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='.graphOptions.html'>graphOptions</a></span><span class='op'>(</span>palette <span class='op'>=</span> <span class='va'>oldColor</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## NOT RUN</span></span>
+<span class='r-in'><span class='co'># spot the differences (if you find any report them to the package maintainer!)</span></span>
+<span class='r-in'><span class='va'>plot</span> <span class='op'>&lt;-</span> <span class='fu'>JASPScatterPlot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, xName <span class='op'>=</span> <span class='st'>"Normal"</span>, yName <span class='op'>=</span> <span class='st'>"Gamma"</span>, addSmooth <span class='op'>=</span> <span class='cn'>FALSE</span>,</span>
+<span class='r-in'>                        emulateGgMarginal <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>plot</span></span>
+<span class='r-in'><span class='co'># ggExtra::ggMarginal(plot$subplots[[1]])</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='op'>}</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
