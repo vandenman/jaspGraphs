@@ -1,0 +1,60 @@
+name: Downstream tests
+
+on:
+  issue_comment:
+    types:
+    - created
+
+jobs:
+  downstream-tests:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.issue.pull_request && github.event.comment.body == '/test-downstream'}}
+    steps:
+
+    - name: Get PR SHA
+      id: sha
+      uses: actions/github-script@v4
+      with:
+        result-encoding: string
+        script: |
+          const { owner, repo, number } = context.issue;
+          const pr = await github.pulls.get({
+            owner,
+            repo,
+            pull_number: number,
+          });
+          return pr.data.head.sha
+
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ steps.sha.outputs.result }}
+      - name: Run unit tests for base modules
+        run: echo "running tests"
+
+    - name: Fail randomly
+      run: |
+        cat README.md
+        exit $((RANDOM % 2))
+
+    - name: Message success
+      if: ${{ success() }}
+      uses: actions/github-script@v4
+      with:
+        script: |
+          github.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: 'Downstream tests succeeded! ✅',
+          });
+    - name: Message failure
+      if: ${{ failure() }}
+      uses: actions/github-script@v4
+      with:
+        script: |
+          github.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: 'Downstream tests failed! ❌',
+          });  
