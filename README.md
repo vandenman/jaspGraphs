@@ -25,3 +25,5 @@ jaspGraphs is only available through GitHub, so you need to use some package tha
 ```r
 remotes::install_github("jasp-stats/jaspGraphs")
 ```
+
+
