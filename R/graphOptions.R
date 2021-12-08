@@ -2,7 +2,7 @@
 #' @export
 .graphOptions <- list2env(list(
   legend.position = "auto",
-  fontsize        = 17L,
+  fontsize        = 16L,
   legend.cex      = 1.25,
   axis.title.cex  = 1.2,
   family          = NULL,
