@@ -110,7 +110,7 @@ themeJaspRaw = function(legend.position = "none",
         axis.title = element_text(size = axis.title.cex*fontsize),
         axis.ticks = element_line(size = axisTickWidth, color = "black"), # tick width
         axis.title.x = element_text(margin = margin(t = 15, b = 5)),
-        axis.title.y = element_text(margin = margin(r = 10, l = 5)),
+        axis.title.y = element_text(margin = margin(r = 10, l = 5), angle = 90),
         axis.text.x = element_text(size = fontsize, colour = "black", margin = margin(t = 7), vjust = Xvjust),
         axis.text.y = element_text(size = fontsize, colour = "black", margin = margin(r = 7), vjust = Yvjust),
 
@@ -132,11 +132,11 @@ themeJaspRaw = function(legend.position = "none",
 
         # plot
         plot.background = ggplot2::element_rect(fill = "transparent", color = "transparent"),
-        plot.margin = ggplot2::margin(),
+        plot.margin = ggplot2::margin(5.5, 5.5, 5.5, 5.5, "pt"), # default of theme_grey()
         plot.title = ggplot2::element_text(family = family, size = fontsize, hjust = 0.5), # center title
 
-		# facet_wrap / facet_grid
-		strip.background = element_rect(fill = "transparent", color = "transparent")
+        # facet_wrap / facet_grid
+        strip.background = element_rect(fill = "transparent", color = "transparent")
 
     )
 }

@@ -5,7 +5,7 @@ jaspGraphs_data <- list2env(list(
   # discrete color scales
   colorblind     = list(colors = RColorBrewer::brewer.pal(8L, "Dark2")),
   colorblind2    = list(colors = RColorBrewer::brewer.pal(8L, "Set2")),
-  colorblind3    = list(colors = c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")), # from ggthemes
+  colorblind3    = list(colors = c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")), # from ggtheme, https://github.com/jrnold/ggthemes/blob/ca38c6250b17acc138b5cd5ccc45ab9e07234f3a/data-raw/theme-data/colorblind.yml#L1-L8s
   jaspPalette    = list(colors = c("#00A9E6", "#00BA63", "#BA0057", "#FB8B00", "#956BF8", "#38BBBB", "#633F33", "#EA008B")),  # JASP´s own palette, created by Vincent Ott
   viridis        = list(colors = viridisLite::viridis(256L)), # viridis::scale_color_viridis
   blue           = list(colors = c("#d1e1ec", "#b3cde0", "#6497b1", "#005b96", "#03396c", "#011f4b")), # bayesplot::color_scheme_get("blue")
@@ -40,8 +40,16 @@ JASPcolors <- function(palette = getGraphOption("palette"), asFunction = FALSE) 
     if (!is.null(fun))
       return(fun)
 
+    nColors <- length(colors)
     return(function(n) {
-      scales::gradient_n_pal(colors, values = NULL)(seq(0, 1, length.out = n))
+      x <- if (n > nColors) {
+        seq(0, 1, length.out = n)
+      } else {
+        # this is identical to seq(0, 1, length.out = nColors)[1:n]
+        by <- 1 / (nColors - 1)
+        seq(0, by = by, length.out = n)
+      }
+      scales::gradient_n_pal(colors, values = NULL)(x)
     })
   } else {
     return(colors)
