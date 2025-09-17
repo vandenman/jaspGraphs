@@ -48,3 +48,23 @@ isContinuousScale <- function(x) inherits(x, c("ScaleContinuousPosition", "Scale
 is.waive          <- function(x) inherits(x, "waiver")
 is.sec_axis       <- function(x) inherits(x, "AxisSecondary")
 is.formula        <- function(x) inherits(x, "formula")
+
+maybePatchSize0 <- function() {
+  # this exists because of https://github.com/tidyverse/ggplot2/issues/6617
+  # the added `|| is.expression(x)` fixes the problem
+  # TODO: when ggplot2 fixes this, specify an upper bound for the version!
+  # TODO: when dropping support for old ggplot2 versions, remove this function
+  if (graphOptions("ggVersion") >= "4.0.0") {
+    assignFunctionInPackage(
+      fun = function(x) {
+        if (vctrs::obj_is_vector(x)) {
+          vctrs::vec_size(x)
+        } else if (is.vector(x) || is.expression(x)) {
+          length(x)
+        } else {
+          NULL
+        }
+      }, name = "size0", package = "ggplot2")
+  }
+}
+
